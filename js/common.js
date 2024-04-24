@@ -60,7 +60,7 @@ const regionFunc = (element, codes) => {
 
 const fetchLibrary = async (page) => {
   const apiUrl = new URL(
-    `//openapi.seoul.go.kr:8088/${apiKey}/json/SeoulPublicLibraryInfo/${totPage}/${libNum}/`
+    `http://openapi.seoul.go.kr:8088/${apiKey}/json/SeoulPublicLibraryInfo/${totPage}/${libNum}/`
   );
 
   apiUrl.searchParams.append("pageSize", pageSize);
