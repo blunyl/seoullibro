@@ -1,13 +1,13 @@
-const libraryCon = document.querySelector(".library");
-const gangNam = document.querySelector(".gangNam");
-const gangBuk = document.querySelector(".gangBuk");
-const gangDong = document.querySelector(".gangDong");
-const gangSeo = document.querySelector(".gangSeo");
+const libraryCon = document.querySelector('.library');
+const gangNam = document.querySelector('.gangNam');
+const gangBuk = document.querySelector('.gangBuk');
+const gangDong = document.querySelector('.gangDong');
+const gangSeo = document.querySelector('.gangSeo');
 
-const resultCon = document.querySelector(".resultCon");
-const srch = document.querySelector(".searchInput");
-const srchIcon = document.querySelector(".fa-magnifying-glass");
-const popupCon = document.querySelector(".popupCon");
+const resultCon = document.querySelector('.resultCon');
+const srch = document.querySelector('.searchInput');
+const srchIcon = document.querySelector('.fa-magnifying-glass');
+const popupCon = document.querySelector('.popupCon');
 
 const apiKey = `4e485a44716c61693132326e6d436c4b`;
 const totPage = 1;
@@ -18,26 +18,26 @@ let pageSize = 6;
 let page = 1;
 let groupSize = 6;
 let filteredLibList = [];
-let currentFilter = "";
+let currentFilter = '';
 
-const codesGangSeo = ["0001", "0002", "0006", "0025"];
-const codesGangNam = ["0003", "0004", "0005", "0007", "0008", "0009"];
-const codesGangDong = ["0010"];
+const codesGangSeo = ['0001', '0002', '0006', '0025'];
+const codesGangNam = ['0003', '0004', '0005', '0007', '0008', '0009'];
+const codesGangDong = ['0010'];
 const codesGangBuk = [
-  "0011",
-  "0012",
-  "0013",
-  "0014",
-  "0015",
-  "0016",
-  "0017",
-  "0018",
-  "0019",
-  "0020",
-  "0021",
-  "0022",
-  "0023",
-  "0024",
+  '0011',
+  '0012',
+  '0013',
+  '0014',
+  '0015',
+  '0016',
+  '0017',
+  '0018',
+  '0019',
+  '0020',
+  '0021',
+  '0022',
+  '0023',
+  '0024',
 ];
 
 const fetchData = (libList, codes) => {
@@ -45,11 +45,11 @@ const fetchData = (libList, codes) => {
 };
 
 const displayLib = (libraries) => {
-  libraryCon.innerHTML = libraries.map(libHtml).join("");
+  libraryCon.innerHTML = libraries.map(libHtml).join('');
 };
 
 const regionFunc = (element, codes) => {
-  element.addEventListener("click", () => {
+  element.addEventListener('click', () => {
     currentFilter = codes;
     const filtered = fetchData(filteredLibList, codes);
     displayLib(paginate(filtered, 1, pageSize));
@@ -68,8 +68,8 @@ const fetchLibrary = async (page) => {
     `http://openapi.seoul.go.kr:8088/${apiKey}/json/SeoulPublicLibraryInfo/${totPage}/${libNum}/`
   );
 
-  apiUrl.searchParams.append("pageSize", pageSize);
-  apiUrl.searchParams.append("page", page);
+  apiUrl.searchParams.append('pageSize', pageSize);
+  apiUrl.searchParams.append('page', page);
 
   const response = await fetch(apiUrl);
   const data = await response.json();
@@ -152,7 +152,7 @@ const pagination = (totalItems) => {
 
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHtml += `<button class="page-link"
-    ${i == page ? "on" : ""} " onclick="moveToPage(${i})">
+    ${i == page ? 'on' : ''} " onclick="moveToPage(${i})">
     ${i}</button>`;
   }
 
@@ -164,17 +164,16 @@ const pagination = (totalItems) => {
     <span aria-hidden="true">&raquo;</span>
   </button>`;
 
-  document.querySelector(".btnCon").innerHTML = paginationHtml;
+  document.querySelector('.btnCon').innerHTML = paginationHtml;
 };
 
 const paginate = (array, page_number, page_size) => {
   return array.slice((page_number - 1) * page_size, page_number * page_size);
 };
 
-// TODO: 검색
 // 검색 함수
 const srchItems = (searchTerm) => {
-  const regex = new RegExp(searchTerm, "gi");
+  const regex = new RegExp(searchTerm, 'gi');
   const srchResult = filteredLibList.filter((item) =>
     item.LBRRY_NAME.match(regex)
   );
@@ -185,16 +184,16 @@ const srchItems = (searchTerm) => {
 
 // 검색 결과 표시
 const updateResults = (results) => {
-  resultCon.innerHTML = "";
+  resultCon.innerHTML = '';
 
   if (results.length === 0) {
-    resultCon.innerHTML = "<li>검색 결과가 없습니다.</li>";
+    resultCon.innerHTML = '<li>검색 결과가 없습니다.</li>';
     return;
   }
 
   results.forEach((item) => {
     const name = libHtml(item);
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.textContent = item.LBRRY_NAME;
     li.innerHTML = `<a href="#">${name}</a>`;
     resultCon.appendChild(li);
@@ -205,12 +204,12 @@ const updateResults = (results) => {
 fetchLibrary(1);
 
 // 입력 값이 변경될 때마다 검색
-srch.addEventListener("input", function () {
+srch.addEventListener('input', function () {
   const srchTerm = srch.value.trim();
   if (srchTerm.length > 0) {
     srchItems(srchTerm);
   } else {
-    resultCon.innerHTML = "";
+    resultCon.innerHTML = '';
   }
 });
 
@@ -220,19 +219,19 @@ const performSrch = () => {
   if (srchTerm.length > 0) {
     srchItems(srchTerm);
   } else {
-    resultCon.innerHTML = "";
+    resultCon.innerHTML = '';
   }
 };
 
-srch.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
+srch.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
     performSrch();
   }
 });
 
-srchIcon.addEventListener("click", performSrch);
+srchIcon.addEventListener('click', performSrch);
 
-// TODO:  popup
+// popup
 function showPopup(name, addr, tel, time, close, homePage) {
   const popupContent = `
     <section class="details">
