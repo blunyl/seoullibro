@@ -1,12 +1,12 @@
-const libraryCon = document.querySelector(".library");
-const gangNam = document.querySelector(".gangNam");
-const gangBuk = document.querySelector(".gangBuk");
-const gangDong = document.querySelector(".gangDong");
-const gangSeo = document.querySelector(".gangSeo");
+const libraryCon = document.querySelector('.library');
+const gangNam = document.querySelector('.gangNam');
+const gangBuk = document.querySelector('.gangBuk');
+const gangDong = document.querySelector('.gangDong');
+const gangSeo = document.querySelector('.gangSeo');
 
-const resultCon = document.querySelector(".resultCon");
-const srch = document.querySelector(".searchInput");
-const srchIcon = document.querySelector(".fa-magnifying-glass");
+const resultCon = document.querySelector('.resultCon');
+const srch = document.querySelector('.searchInput');
+const srchIcon = document.querySelector('.fa-magnifying-glass');
 
 const apiKey = `69434344756c6169313034547156706e`;
 const totPage = 1;
@@ -17,26 +17,26 @@ let pageSize = 6;
 let page = 1;
 let groupSize = 5;
 let filteredLibList = [];
-let currentFilter = "";
+let currentFilter = '';
 
-const codesGangSeo = ["0001", "0002", "0006", "0025"];
-const codesGangNam = ["0003", "0004", "0005", "0007", "0008", "0009"];
-const codesGangDong = ["0010"];
+const codesGangSeo = ['0001', '0002', '0006', '0025'];
+const codesGangNam = ['0003', '0004', '0005', '0007', '0008', '0009'];
+const codesGangDong = ['0010'];
 const codesGangBuk = [
-  "0011",
-  "0012",
-  "0013",
-  "0014",
-  "0015",
-  "0016",
-  "0017",
-  "0018",
-  "0019",
-  "0020",
-  "0021",
-  "0022",
-  "0023",
-  "0024",
+  '0011',
+  '0012',
+  '0013',
+  '0014',
+  '0015',
+  '0016',
+  '0017',
+  '0018',
+  '0019',
+  '0020',
+  '0021',
+  '0022',
+  '0023',
+  '0024',
 ];
 
 const fetchData = (libList, codes) => {
@@ -44,11 +44,11 @@ const fetchData = (libList, codes) => {
 };
 
 const displayLib = (libraries) => {
-  libraryCon.innerHTML = libraries.map(libHtml).join("");
+  libraryCon.innerHTML = libraries.map(libHtml).join('');
 };
 
 const regionFunc = (element, codes) => {
-  element.addEventListener("click", () => {
+  element.addEventListener('click', () => {
     currentFilter = codes;
     const filtered = fetchData(filteredLibList, codes);
     displayLib(pagiBtn(filtered, 1, pageSize));
@@ -57,13 +57,14 @@ const regionFunc = (element, codes) => {
     pagination(filtered.length);
   });
 };
+
 const fetchLibrary = async (page) => {
   const apiUrl = new URL(
     `http://openapi.seoul.go.kr:8088/${apiKey}/json/SeoulPublicLibraryInfo/${totPage}/${libNum}/`
   );
 
-  apiUrl.searchParams.append("pageSize", pageSize);
-  apiUrl.searchParams.append("page", page);
+  apiUrl.searchParams.append('pageSize', pageSize);
+  apiUrl.searchParams.append('page', page);
 
   const response = await fetch(apiUrl);
   const data = await response.json();
@@ -134,7 +135,7 @@ const pagination = (totalItems) => {
 
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHtml += `<button class="page-link"
-    ${i == page ? "on" : ""} " onclick="moveToPage(${i})">
+    ${i == page ? 'on' : ''} " onclick="moveToPage(${i})">
     ${i}</button>`;
   }
 
@@ -146,7 +147,7 @@ const pagination = (totalItems) => {
     <span aria-hidden="true">&raquo;</span>
   </button>`;
 
-  document.querySelector(".btnCon").innerHTML = paginationHtml;
+  document.querySelector('.btnCon').innerHTML = paginationHtml;
 };
 
 const pagiBtn = (array, page_number, page_size) => {
@@ -165,7 +166,7 @@ const pagiLib = async () => {
 pagiLib(filteredLibList.length);
 
 const srchItems = (searchTerm) => {
-  const regex = new RegExp(searchTerm, "gi");
+  const regex = new RegExp(searchTerm, 'gi');
   const srchResult = filteredLibList.filter((item) =>
     item.LBRRY_NAME.match(regex)
   );
@@ -174,16 +175,16 @@ const srchItems = (searchTerm) => {
 };
 
 const updateResults = (results) => {
-  resultCon.innerHTML = "";
+  resultCon.innerHTML = '';
 
   if (results.length === 0) {
-    resultCon.innerHTML = "<li>검색 결과가 없습니다.</li>";
+    resultCon.innerHTML = '<li>검색 결과가 없습니다.</li>';
     return;
   }
 
   results.forEach((item) => {
     const name = libHtml(item);
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.textContent = item.LBRRY_NAME;
     li.innerHTML = `<a href="#">${name}</a>`;
     resultCon.appendChild(li);
@@ -192,12 +193,12 @@ const updateResults = (results) => {
 
 fetchLibrary(1);
 
-srch.addEventListener("input", function () {
+srch.addEventListener('input', function () {
   const srchTerm = srch.value.trim();
   if (srchTerm.length > 0) {
     srchItems(srchTerm);
   } else {
-    resultCon.innerHTML = "";
+    resultCon.innerHTML = '';
   }
 });
 
@@ -206,19 +207,19 @@ const performSrch = () => {
   if (srchTerm.length > 0) {
     srchItems(srchTerm);
   } else {
-    resultCon.innerHTML = "";
+    resultCon.innerHTML = '';
   }
 };
 
-srch.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
+srch.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
     performSrch();
   }
 });
-srchIcon.addEventListener("click", performSrch);
+srchIcon.addEventListener('click', performSrch);
 
-const popupCon = document.createElement("div");
-popupCon.className = "popupCon";
+const popupCon = document.createElement('div');
+popupCon.className = 'popupCon';
 function showPopup(name, addr, tel, time, close, homePage) {
   const popupContent = `
     <section class="details">
@@ -235,7 +236,7 @@ function showPopup(name, addr, tel, time, close, homePage) {
   document.body.appendChild(popupCon);
 }
 
-popupCon.addEventListener("click", (e) => {
+popupCon.addEventListener('click', (e) => {
   if (e.target === popupCon) {
     closePopup();
   }
