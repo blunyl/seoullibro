@@ -1,0 +1,284 @@
+@charset 'utf-8';
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-bg: #efefef;
+  --color-wd: #fafaf8;
+  --color-pp: #d5d5d5;
+  --color-gr: #5f5d5d;
+  --color-nv: #1f41bb;
+  font-family: "IBMPlexSansKR-Regular";
+}
+
+section,
+footer {
+  padding: 30px 0;
+  position: relative;
+}
+
+.wrapper {
+  max-width: 750px;
+  width: calc(100% - 2rem);
+  margin: auto;
+  overflow: hidden;
+}
+
+header {
+  padding: 1rem;
+}
+
+header .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-nv);
+  padding: 0.5rem;
+}
+
+header h1:hover {
+  opacity: 0.7;
+}
+
+.fa-book {
+  margin-right: 5px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.search input {
+  position: relative;
+  width: 350px;
+  padding: 0.8rem;
+  background-color: transparent;
+  border-radius: 200px;
+  border: 2px solid var(--color-nv);
+  outline: none;
+  font-size: 15px;
+  color: var(--color-nv);
+}
+
+.search i {
+  position: absolute;
+  right: 50px;
+  transform: translateY(-15%);
+  color: var(--color-nv);
+  cursor: pointer;
+}
+
+.member {
+  padding: 0.8rem;
+  font-size: 15px;
+}
+
+.member .login {
+  margin-right: 10px;
+}
+
+.login:hover,
+.myPage:hover {
+  color: var(--color-nv);
+  font-weight: bold;
+}
+
+.resultCon {
+  text-align: center;
+  background-color: var(--color-bg);
+}
+
+.introduction img {
+  position: relative;
+  height: 330px;
+  display: block;
+  margin: 30px auto;
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 5rem;
+}
+
+.sort > li {
+  position: relative;
+  color: var(--color-gr);
+  bottom: 0px;
+}
+
+.sort > li:hover {
+  color: var(--color-pp);
+  display: block;
+  bottom: 3px;
+}
+
+.gangNam {
+  background-color: coral;
+  border-radius: 300px;
+  width: 100px;
+  text-align: center;
+}
+
+.gangBuk {
+  background-color: yellow;
+  border-radius: 300px;
+  width: 100px;
+  text-align: center;
+}
+
+.gangDong {
+  background-color: skyblue;
+  border-radius: 300px;
+  width: 100px;
+  text-align: center;
+}
+
+.gangSeo {
+  background-color: yellowgreen;
+  border-radius: 300px;
+  width: 100px;
+  text-align: center;
+}
+
+.result {
+  display: grid;
+  padding: 0.3rem;
+}
+
+.result li {
+  position: relative;
+  display: inline-block;
+  max-width: 50%;
+  margin: auto;
+}
+
+.result li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: solid 2px var(--color-nv);
+  opacity: 0;
+}
+
+.result li:hover::after {
+  opacity: 1;
+}
+
+.name {
+  text-align: center;
+}
+
+.library {
+  border: 1px solid var(--color-nv);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  min-height: 273px;
+}
+
+.popupCon {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.details {
+  background-color: var(--color-wd);
+  padding: 40px;
+  line-height: 35px;
+  overflow-y: auto;
+}
+
+.details .libName {
+  font-weight: bold;
+  font-size: large;
+  color: var(--color-nv);
+}
+
+.details .homePage > a {
+  text-decoration: underline;
+}
+.details .homePage > a:hover {
+  color: var(--color-nv);
+}
+
+.details .close {
+  position: absolute;
+  top: 25px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+}
+
+.details button:hover {
+  color: var(--color-nv);
+}
+
+.btnCon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.btnCon .page-link {
+  color: var(--color-nv);
+  margin: 20px;
+}
+.btnCon .page-link:hover {
+  color: var(--color-pp);
+  font-weight: bold;
+}
+
+.Previous,
+.Next {
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  width: 30px;
+  height: 30px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer img {
+  width: 50px;
+  height: 50px;
+}
+
+footer .paragraph {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-nv);
+  font-weight: bold;
+}
