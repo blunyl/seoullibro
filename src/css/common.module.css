@@ -1,25 +1,21 @@
 @charset 'utf-8';
 @font-face {
-  font-family: "IBMPlexSansKR-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
-    format("woff");
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --color-bg: #efefef;
+  --color-gr: #264653;
+  --color-br: #f4f1de;
+  --color-bl: #b7cded;
+  --color-lb: #dbedff;
   --color-wd: #fafaf8;
   --color-pp: #d5d5d5;
-  --color-gr: #5f5d5d;
-  --color-nv: #1f41bb;
-  font-family: "IBMPlexSansKR-Regular";
-}
-
-section,
-footer {
-  padding: 30px 0;
-  position: relative;
+  --color-wh: #efefef;
+  font-family: 'IBMPlexSansKR-Regular';
 }
 
 .wrapper {
@@ -29,29 +25,45 @@ footer {
   overflow: hidden;
 }
 
-header {
+.header {
   padding: 1rem;
-}
-
-header .inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header h1 {
+.header h1 {
   font-size: 20px;
   font-weight: bold;
-  color: var(--color-nv);
+  color: var(--color-gr);
   padding: 0.5rem;
 }
 
-header h1:hover {
-  opacity: 0.7;
+.header h1:hover {
+  opacity: 0.9;
 }
 
-.fa-book {
-  margin-right: 5px;
+.btnCon {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.signupBtn,
+.loginBtn {
+  border: 1px solid var(--color-gr);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  width: 75px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+.signupBtn {
+  background-color: var(--color-gr);
+  color: var(--color-wh);
+}
+
+.loginBtn {
 }
 
 .search {
@@ -68,17 +80,17 @@ header h1:hover {
   padding: 0.8rem;
   background-color: transparent;
   border-radius: 200px;
-  border: 2px solid var(--color-nv);
+  border: 2px solid var(--color-gr);
   outline: none;
   font-size: 15px;
-  color: var(--color-nv);
+  color: var(--color-gr);
 }
 
 .search i {
   position: absolute;
   right: 50px;
   transform: translateY(-15%);
-  color: var(--color-nv);
+  color: var(--color-gr);
   cursor: pointer;
 }
 
@@ -93,7 +105,7 @@ header h1:hover {
 
 .login:hover,
 .myPage:hover {
-  color: var(--color-nv);
+  color: var(--color-gr);
   font-weight: bold;
 }
 
@@ -119,7 +131,7 @@ header h1:hover {
 
 .sort > li {
   position: relative;
-  color: var(--color-gr);
+  color: var(--color-br);
   bottom: 0px;
 }
 
@@ -170,12 +182,12 @@ header h1:hover {
 }
 
 .result li::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  border-bottom: solid 2px var(--color-nv);
+  border-bottom: solid 2px var(--color-gr);
   opacity: 0;
 }
 
@@ -188,7 +200,7 @@ header h1:hover {
 }
 
 .library {
-  border: 1px solid var(--color-nv);
+  border: 1px solid var(--color-gr);
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -217,14 +229,14 @@ header h1:hover {
 .details .libName {
   font-weight: bold;
   font-size: large;
-  color: var(--color-nv);
+  color: var(--color-gr);
 }
 
 .details .homePage > a {
   text-decoration: underline;
 }
 .details .homePage > a:hover {
-  color: var(--color-nv);
+  color: var(--color-gr);
 }
 
 .details .close {
@@ -238,7 +250,7 @@ header h1:hover {
 }
 
 .details button:hover {
-  color: var(--color-nv);
+  color: var(--color-gr);
 }
 
 .btnCon {
@@ -249,7 +261,7 @@ header h1:hover {
 }
 
 .btnCon .page-link {
-  color: var(--color-nv);
+  color: var(--color-gr);
   margin: 20px;
 }
 .btnCon .page-link:hover {
@@ -279,6 +291,6 @@ footer img {
 footer .paragraph {
   padding: 1rem;
   text-align: center;
-  color: var(--color-nv);
+  color: var(--color-gr);
   font-weight: bold;
 }
