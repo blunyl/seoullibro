@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header h1 {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-gr);
+  gap: 10px;
+}
+
+.header h1:hover {
+  opacity: 0.9;
+}
+
+.btnCon {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.aboutBtn,
+.mapBtn {
+  border: 1px solid var(--color-gr);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  width: 75px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+.aboutBtn {
+  background-color: var(--color-gr);
+  color: var(--color-wh);
+}
